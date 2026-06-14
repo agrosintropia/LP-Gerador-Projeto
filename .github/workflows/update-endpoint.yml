@@ -3,19 +3,19 @@ on:
   workflow_dispatch:
 jobs:
   update:
-      runs-on: ubuntu-latest
-          permissions:
-                contents: write
-                    steps:
-                          - uses: actions/checkout@v4
-                                - name: Update ENDPOINT
-                                        run: |
-                                                  sed -i "s|ENDPOINT='https://formspree.io/f/SEU_ID_AQUI'|ENDPOINT='https://agrosintropia.app.n8n.cloud/webhook/lead-gerador-pomar'|g" index.html
-                                                            grep -n "ENDPOINT" index.html | head -5
-                                                                  - name: Commit e push
-                                                                          run: |
-                                                                                    git config user.name "GitHub Actions"
-                                                                                              git config user.email "actions@github.com"
-                                                                                                        git add index.html
-                                                                                                                  git commit -m "LP: atualização completa jun/2025" || echo "ok"
-                                                                                                                            git push
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update ENDPOINT
+        run: |
+          sed -i "s|ENDPOINT='https://formspree.io/f/SEU_ID_AQUI'|ENDPOINT='https://agrosintropia.app.n8n.cloud/webhook/lead-gerador-pomar'|g" index.html
+          grep -n "ENDPOINT" index.html | head -5
+      - name: Commit e push
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add index.html
+          git commit -m "LP: atualização completa jun/2025" || echo "ok"
+          git push
